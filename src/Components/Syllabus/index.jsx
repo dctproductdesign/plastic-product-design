@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 export default function PlasticSyllabusTableSection() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   // Put your 1–120 sessions here (I added 01–50 from your message)
   const sessions = useMemo(
