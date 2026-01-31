@@ -531,10 +531,10 @@ export default function Landing() {
 
               <div className="flex flex-col sm:flex-row gap-4 mb-4">
                 <a
-                  href="#courses"
+                  href="#pricing"
                   className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white px-8 py-4 rounded-full font-semibold transition-all hover:scale-105 group"
                 >
-                  <span>View Courses</span>
+                  <span>WEBINAR-HOUR-OFFER</span>
                   <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
                 </a>
 
@@ -669,7 +669,7 @@ export default function Landing() {
 
           {/* Reassurance */}
           <p className="text-xs text-slate-500 dark:text-slate-500 mt-4 text-center">
-            Instant access • No forms • No spam
+            Instant access • No forms
           </p>
         </div>
       </div>

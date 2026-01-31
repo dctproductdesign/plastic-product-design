@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+
 import p01Cad from "./p01-cad.png";
 import p01Car from "./p01-car.png";
 import p02Cad from "./p02-cad.png";
@@ -16,15 +17,20 @@ import p07Car from "./p07-car.png";
 import p08Cad from "./p08-cad.png";
 import p08Car from "./p08-car.png";
 
-
 function ProjectFlipCard({ project }) {
   const [flipped, setFlipped] = useState(false);
+
+  // ✅ Safe defaults (prevents blank screen)
+  const tag = project.tag || "OEM Project";
+  const desc = project.desc || "Flip to see real in-car position.";
+  const area = project.area || "Automotive Trims";
+  const points = Array.isArray(project.points) ? project.points : [];
 
   return (
     <div className="group">
       <button
         type="button"
-        onClick={() => setFlipped((v) => !v)} // mobile/touch support
+        onClick={() => setFlipped((v) => !v)}
         className="w-full text-left"
         aria-label={`Flip card: ${project.title}`}
       >
@@ -45,7 +51,6 @@ function ProjectFlipCard({ project }) {
               className={[
                 "absolute inset-0 transition-transform duration-700",
                 "[transform-style:preserve-3d]",
-                // hover flip for desktop + click flip for mobile
                 "group-hover:[transform:rotateY(180deg)]",
                 flipped ? "[transform:rotateY(180deg)]" : "",
               ].join(" ")}
@@ -55,25 +60,24 @@ function ProjectFlipCard({ project }) {
                 <div className="relative h-full">
                   <img
                     src={project.frontImg}
-                    alt={project.frontAlt}
+                    alt={project.frontAlt || project.title}
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
-                  {/* overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                   <div className="absolute bottom-0 p-5">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-sky-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-sky-300">
-                      {project.tag}
+                    <span className="inline-flex items-center gap-2 rounded-full bg-sky-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-sky-200">
+                      {tag}
                     </span>
+
                     <h3 className="mt-3 font-display text-xl font-semibold text-white">
                       {project.title}
                     </h3>
-                    <p className="mt-1 text-sm text-white/80">
-                      {project.desc}
-                    </p>
+
+                    <p className="mt-1 text-sm text-white/80">{desc}</p>
 
                     <div className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/80">
-                      Hover / Tap to flip →
+                      Tap to flip →
                     </div>
                   </div>
                 </div>
@@ -84,38 +88,47 @@ function ProjectFlipCard({ project }) {
                 <div className="relative h-full">
                   <img
                     src={project.backImg}
-                    alt={project.backAlt}
+                    alt={project.backAlt || `${project.title} in-car position`}
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
 
                   <div className="absolute bottom-0 p-5">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-300">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-200">
                       In-car position
                     </span>
 
-                    <h4 className="mt-3 text-base font-semibold text-white">
-                      What you’ll validate
-                    </h4>
-                    <ul className="mt-2 space-y-1 text-sm text-white/80">
-                      {project.points.map((pt) => (
-                        <li key={pt} className="flex gap-2">
-                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-white/70" />
-                          <span>{pt}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    {/* ✅ Show bullets only if points exist */}
+                    {points.length > 0 ? (
+                      <>
+                        <h4 className="mt-3 text-base font-semibold text-white">
+                          What you’ll validate
+                        </h4>
+                        <ul className="mt-2 space-y-1 text-sm text-white/80">
+                          {points.map((pt) => (
+                            <li key={pt} className="flex gap-2">
+                              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-white/70" />
+                              <span>{pt}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : (
+                      <p className="mt-3 text-sm text-white/85">
+                        Flip back to view CAD model.
+                      </p>
+                    )}
 
                     <div className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/80">
-                      ← Hover / Tap to go back
+                      ← Tap to go back
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* subtle floating shine */}
+            {/* shine */}
             <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
               <div className="absolute -left-24 top-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
               <div className="absolute -right-24 bottom-10 h-40 w-40 rounded-full bg-sky-500/10 blur-2xl" />
@@ -126,10 +139,10 @@ function ProjectFlipCard({ project }) {
           <div className="flex items-center justify-between gap-3 px-5 py-4 border-t border-slate-200 dark:border-slate-800">
             <div className="min-w-0">
               <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">
-                {project.short}
+                {project.short || project.title}
               </p>
               <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
-                {project.area}
+                {area}
               </p>
             </div>
 
@@ -150,110 +163,83 @@ export default function ProjectsSection() {
         no: "01",
         title: "Seat Recliner Cover",
         short: "Seat side trim cover",
-        area: "Seat Trims",
-        tag: "Seat Trims",
-        desc: "Class-A surfacing → close body → manufacturable B-side.",
         frontImg: p01Cad,
         backImg: p01Car,
         frontAlt: "Project 01 CAD model (Seat Recliner Cover)",
         backAlt: "Project 01 in-car position (Seat Recliner Cover)",
-        points: ["Draft & tooling direction", "Mounting strategy", "Parting & shut-off awareness"],
+        // ✅ optional fields (you can remove safely)
+        area: "Seat Trims",
+        tag: "Seat Trims",
       },
       {
         no: "02",
-        title: "Dashboard / IP Trim Part (Fuse Box Area)",
-        short: "IP trim component",
-        area: "Dashboard / IP Trims",
-        tag: "IP Trims",
-        desc: "Trim packaging + clean surfaces + robust features.",
+        title: "Fuse Box Cover",
+        short: "Dashboard Trim",
         frontImg: p02Cad,
         backImg: p02Car,
-        frontAlt: "Project 02 CAD model (Dashboard/IP trim part)",
-        backAlt: "Project 02 in-car position (Dashboard/IP trim part)",
-        points: ["Packaging clearances", "Ribs/bosses basics", "Assembly feasibility"],
+        area: "IP / Dashboard",
+        tag: "Dashboard",
       },
       {
         no: "03",
-        title: "Fuel Tank & Bonnet Switches Panel",
-        short: "Switch bezel / panel",
-        area: "Dashboard / IP Trims",
-        tag: "Switch Panel",
-        desc: "Switch openings, fit & finish, and production logic.",
+        title: "Cup Holder",
+        short: "Console Trim",
         frontImg: p03Cad,
         backImg: p03Car,
-        frontAlt: "Project 03 CAD model (Fuel tank and bonnet switches)",
-        backAlt: "Project 03 in-car position (Fuel tank and bonnet switches)",
-        points: ["Cutouts & tolerances", "Snap/locator planning", "Gap/flush intent"],
+        area: "Center Console",
+        tag: "Console",
       },
       {
         no: "04",
-        title: "Cup Holder",
-        short: "Console insert",
-        area: "Console Trims",
-        tag: "Console",
-        desc: "Surface continuity + strong B-side + easy tooling.",
+        title: "Central FACIA",
+        short: "Dashboard Trim",
         frontImg: p04Cad,
         backImg: p04Car,
-        frontAlt: "Project 04 CAD model (Cup holder)",
-        backAlt: "Project 04 in-car position (Cup holder)",
-        points: ["Wall thickness control", "Draft-friendly design", "Rib layout basics"],
+        area: "IP / Dashboard",
+        tag: "Dashboard",
       },
       {
         no: "05",
         title: "Map Pocket",
         short: "Door storage pocket",
-        desc: "Door trim sub-assembly with realistic constraints.",
         frontImg: p05Cad,
         backImg: p05Car,
-        frontAlt: "Project 05 CAD model (Map pocket)",
-        backAlt: "Project 05 in-car position (Map pocket)",
-        points: ["Mounting points", "Interference checks", "Manufacturing rules"],
+        area: "Door Trims",
+        tag: "Door Trims",
       },
       {
         no: "06",
         title: "Armrest Design",
         short: "Door armrest zone",
-        area: "Door Trims",
-        tag: "Door Trim",
-        desc: "Ergo + aesthetics + manufacturable engineering.",
         frontImg: p06Cad,
         backImg: p06Car,
-        frontAlt: "Project 06 CAD model (Armrest design)",
-        backAlt: "Project 06 in-car position (Armrest design)",
-        points: ["Section strategy", "B-side feature planning", "Assembly considerations"],
+        area: "Door Trims",
+        tag: "Door Trims",
       },
       {
         no: "07",
         title: "B-Pillar Upper Trim",
-        short: "Pillar cover",
-        area: "Pillar Trims",
-        tag: "Pillar",
-        desc: "Tall trim part with robust locating + finish.",
+        short: "Pillar trim",
         frontImg: p07Cad,
         backImg: p07Car,
-        frontAlt: "Project 07 CAD model (B-pillar upper)",
-        backAlt: "Project 07 in-car position (B-pillar upper)",
-        points: ["Long-part draft checks", "Clip/locator logic", "Quality checkpoints"],
+        area: "Pillar Trims",
+        tag: "Pillar Trims",
       },
       {
         no: "08",
         title: "Tailgate Inner Trim",
         short: "Tailgate inner panel",
-        area: "Tailgate Trims",
-        tag: "Tailgate",
-        desc: "Large trim: structure, ribs, mounting & fitment.",
         frontImg: p08Cad,
         backImg: p08Car,
-        frontAlt: "Project 08 CAD model (Tailgate inner trims)",
-        backAlt: "Project 08 in-car position (Tailgate inner trims)",
-        points: ["Rib network approach", "Fastener strategy", "DMU mindset"],
+        area: "Tailgate Trims",
+        tag: "Tailgate",
       },
     ],
-    [],
+    []
   );
 
   return (
-    <section id="projects" className="py-20 px-6">
+    <section id="projects" className="py-20 px-6 overflow-x-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-xs uppercase tracking-widest text-slate-500 dark:text-slate-500 mb-4 block">
@@ -263,7 +249,8 @@ export default function ProjectsSection() {
             Projects You’ll Build
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
-            OEM-style automotive trim parts — CAD model + real in-car context (flip to view).
+            OEM-style automotive trim parts — CAD model + real in-car context
+            (flip to view).
           </p>
         </div>
 

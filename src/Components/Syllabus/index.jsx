@@ -186,12 +186,6 @@ export default function PlasticSyllabusTableSection() {
       },
       {
         no: "30",
-        title: "Mastersection Exercise 02",
-        category: "Design Exercise",
-        trainer: "Mr. Balkrishna Dhuri",
-      },
-      {
-        no: "30",
         title: "Mastersection EX. 02",
         category: "Design Exercise",
         status: "",
@@ -370,7 +364,7 @@ export default function PlasticSyllabusTableSection() {
   }, [isOpen, sessions.length]);
 
   return (
-    <section className="py-20 px-6 bg-white border-y border-slate-200">
+    <section className="py-20 px-6 bg-blue-300 border-y border-slate-200">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-10">

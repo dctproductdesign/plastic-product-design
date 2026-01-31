@@ -19,17 +19,20 @@ export default function ContactCTA() {
             </h2>
 
             <p className="text-slate-300 text-lg mb-8 leading-relaxed max-w-xl">
-              Choosing the right path matters.  
-              If you are serious about entering the automotive design industry,
-              talk to us directly and get clear guidance before you enroll.
+              Choosing the right path matters. If you are serious about entering
+              the automotive design industry, talk to us directly and get clear
+              guidance before you enroll.
             </p>
 
             {/* Trust / Motivation */}
             <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mb-8">
               <p className="text-sm text-slate-300 leading-relaxed">
-                💡 <span className="font-semibold text-white">One conversation</span> can save you
-                years of confusion. Our mentors will guide you honestly —
-                whether this course is right for you or not.
+                💡{" "}
+                <span className="font-semibold text-white">
+                  One conversation
+                </span>{" "}
+                can save you years of confusion. Our mentors will guide you
+                honestly — whether this course is right for you or not.
               </p>
             </div>
           </div>
