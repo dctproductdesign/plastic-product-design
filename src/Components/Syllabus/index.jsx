@@ -87,7 +87,7 @@ export default function PlasticSyllabusTableSection() {
             <div>
               <p className="font-semibold text-lg">View complete session list</p>
               <p className="text-sm text-slate-600 dark:text-slate-400">
-                Total shown: {sessions.length} sessions (add up to 120).
+                Total shown: {sessions.length} sessions, guaranteed 80 hours course.
               </p>
             </div>
 

@@ -1,4 +1,21 @@
 import React, { useMemo, useState } from "react";
+import p01Cad from "./p01-cad.png";
+import p01Car from "./p01-car.png";
+import p02Cad from "./p02-cad.png";
+import p02Car from "./p02-car.png";
+import p03Cad from "./p03-cad.png";
+import p03Car from "./p03-car.png";
+import p04Cad from "./p04-cad.png";
+import p04Car from "./p04-car.png";
+import p05Cad from "./p05-cad.png";
+import p05Car from "./p05-car.png";
+import p06Cad from "./p06-cad.png";
+import p06Car from "./p06-car.png";
+import p07Cad from "./p07-cad.png";
+import p07Car from "./p07-car.png";
+import p08Cad from "./p08-cad.png";
+import p08Car from "./p08-car.png";
+
 
 function ProjectFlipCard({ project }) {
   const [flipped, setFlipped] = useState(false);
@@ -136,8 +153,8 @@ export default function ProjectsSection() {
         area: "Seat Trims",
         tag: "Seat Trims",
         desc: "Class-A surfacing → close body → manufacturable B-side.",
-        frontImg: "/projects/p01-cad.png",
-        backImg: "/projects/p01-car.png",
+        frontImg: p01Cad,
+        backImg: p01Car,
         frontAlt: "Project 01 CAD model (Seat Recliner Cover)",
         backAlt: "Project 01 in-car position (Seat Recliner Cover)",
         points: ["Draft & tooling direction", "Mounting strategy", "Parting & shut-off awareness"],
@@ -149,8 +166,8 @@ export default function ProjectsSection() {
         area: "Dashboard / IP Trims",
         tag: "IP Trims",
         desc: "Trim packaging + clean surfaces + robust features.",
-        frontImg: "/projects/p02-cad.jpg",
-        backImg: "/projects/p02-car.jpg",
+        frontImg: p02Cad,
+        backImg: p02Car,
         frontAlt: "Project 02 CAD model (Dashboard/IP trim part)",
         backAlt: "Project 02 in-car position (Dashboard/IP trim part)",
         points: ["Packaging clearances", "Ribs/bosses basics", "Assembly feasibility"],
@@ -162,8 +179,8 @@ export default function ProjectsSection() {
         area: "Dashboard / IP Trims",
         tag: "Switch Panel",
         desc: "Switch openings, fit & finish, and production logic.",
-        frontImg: "/projects/p03-cad.jpg",
-        backImg: "/projects/p03-car.jpg",
+        frontImg: p03Cad,
+        backImg: p03Car,
         frontAlt: "Project 03 CAD model (Fuel tank and bonnet switches)",
         backAlt: "Project 03 in-car position (Fuel tank and bonnet switches)",
         points: ["Cutouts & tolerances", "Snap/locator planning", "Gap/flush intent"],
@@ -175,8 +192,8 @@ export default function ProjectsSection() {
         area: "Console Trims",
         tag: "Console",
         desc: "Surface continuity + strong B-side + easy tooling.",
-        frontImg: "/projects/p04-cad.jpg",
-        backImg: "/projects/p04-car.jpg",
+        frontImg: p04Cad,
+        backImg: p04Car,
         frontAlt: "Project 04 CAD model (Cup holder)",
         backAlt: "Project 04 in-car position (Cup holder)",
         points: ["Wall thickness control", "Draft-friendly design", "Rib layout basics"],
@@ -185,11 +202,9 @@ export default function ProjectsSection() {
         no: "05",
         title: "Map Pocket",
         short: "Door storage pocket",
-        area: "Door Trims",
-        tag: "Door Trim",
         desc: "Door trim sub-assembly with realistic constraints.",
-        frontImg: "/projects/p05-cad.jpg",
-        backImg: "/projects/p05-car.jpg",
+        frontImg: p05Cad,
+        backImg: p05Car,
         frontAlt: "Project 05 CAD model (Map pocket)",
         backAlt: "Project 05 in-car position (Map pocket)",
         points: ["Mounting points", "Interference checks", "Manufacturing rules"],
@@ -201,8 +216,8 @@ export default function ProjectsSection() {
         area: "Door Trims",
         tag: "Door Trim",
         desc: "Ergo + aesthetics + manufacturable engineering.",
-        frontImg: "/projects/p06-cad.jpg",
-        backImg: "/projects/p06-car.jpg",
+        frontImg: p06Cad,
+        backImg: p06Car,
         frontAlt: "Project 06 CAD model (Armrest design)",
         backAlt: "Project 06 in-car position (Armrest design)",
         points: ["Section strategy", "B-side feature planning", "Assembly considerations"],
@@ -214,8 +229,8 @@ export default function ProjectsSection() {
         area: "Pillar Trims",
         tag: "Pillar",
         desc: "Tall trim part with robust locating + finish.",
-        frontImg: "/projects/p07-cad.jpg",
-        backImg: "/projects/p07-car.jpg",
+        frontImg: p07Cad,
+        backImg: p07Car,
         frontAlt: "Project 07 CAD model (B-pillar upper)",
         backAlt: "Project 07 in-car position (B-pillar upper)",
         points: ["Long-part draft checks", "Clip/locator logic", "Quality checkpoints"],
@@ -227,8 +242,8 @@ export default function ProjectsSection() {
         area: "Tailgate Trims",
         tag: "Tailgate",
         desc: "Large trim: structure, ribs, mounting & fitment.",
-        frontImg: "/projects/p08-cad.jpg",
-        backImg: "/projects/p08-car.jpg",
+        frontImg: p08Cad,
+        backImg: p08Car,
         frontAlt: "Project 08 CAD model (Tailgate inner trims)",
         backAlt: "Project 08 in-car position (Tailgate inner trims)",
         points: ["Rib network approach", "Fastener strategy", "DMU mindset"],

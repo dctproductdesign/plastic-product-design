@@ -5,7 +5,6 @@
 // NOTE: add `scroll-smooth` to <html> via global CSS or set on root wrapper if needed.
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import Comparison from "./Components/Comparison/index";
 import PlasticSyllabusSection from "./Components/Syllabus/index";
 import {
   Sun,
@@ -33,8 +32,10 @@ import {
   Circle,
 } from "lucide-react";
 import ProjectsSection from "./Components/Projects";
-import WhatYouGet from "./Components/WhatYouGet";
 import PricingOffer from "./Components/Pricingoffer";
+import ContactCTA from "./Components/ContactUs";
+import TrustCommunitySection from "./Components/SocialCommunity";
+import FAQSection from "./Components/FAQ";
 
 function cx(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -352,15 +353,25 @@ export default function Landing() {
         )}
       >
         <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-sky-500 to-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-display font-bold text-lg">
-                D
-              </span>
+          <div className="flex items-center gap-3">
+            {/* Digital CAD Logo */}
+            <img
+              src="/dctlogo.jpg"
+              alt="Digital CAD Training"
+              className="h-10 w-auto object-contain"
+            />
+
+            {/* Text + Authorization */}
+            <div className="leading-tight hidden sm:block">
+              <div className="font-display font-semibold text-xl tracking-tight">
+                Digital CAD Training
+              </div>
+              <div className="inline-flex items-center px-3 py-1 rounded-sm bg-[#ff0202]">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-white">
+                  CADPOINT Authorized Training Centre
+                </span>
+              </div>
             </div>
-            <span className="font-display font-semibold text-xl tracking-tight hidden md:block">
-              Digital CAD Training
-            </span>
           </div>
 
           <div className="hidden lg:flex items-center gap-8 text-sm font-medium">
@@ -477,7 +488,7 @@ export default function Landing() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500" />
               </span>
-              Enrollments Open - Offer Hour Actived
+              Enrollments Open - Batch Starts 2nd February 2026!
             </span>
           </div>
 
@@ -553,7 +564,7 @@ export default function Landing() {
                 </div>
               </div>
               <div className="bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6">
-                <div className="text-4xl font-display font-bold mb-2">95%</div>
+                <div className="text-4xl font-display font-bold mb-2">100%</div>
                 <div className="text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wide">
                   Job Placement Rate
                 </div>
@@ -563,170 +574,20 @@ export default function Landing() {
         </div>
       </section>
 
-      <WhatYouGet/>
-
       <PlasticSyllabusSection />
 
       <ProjectsSection />
 
       <PricingOffer />
 
-      
-      {/* Contact Section */}
-      <section
-        id="contact"
-        className="py-20 px-6 bg-gradient-to-br from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 text-white"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="text-xs uppercase tracking-widest text-slate-400 mb-4 block">
-                Get In Touch
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl uppercase tracking-tight font-semibold mb-6">
-                Ready to Start?
-              </h2>
-              <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                Have questions? Want to know more about the courses? Our team is
-                here to help you make the right choice for your career.
-              </p>
+      <ContactCTA />
 
-              <div className="space-y-6">
-                <a
-                  href="tel:+919876543210"
-                  className="flex items-center gap-4 group"
-                >
-                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-sky-500 transition-colors">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-slate-400">Phone</p>
-                    <p className="text-lg font-semibold">+91 98765 43210</p>
-                  </div>
-                </a>
+      <TrustCommunitySection />
 
-                <a
-                  href="https://wa.me/919876543210"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-4 group"
-                >
-                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-green-500 transition-colors">
-                    <MessageCircle className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-slate-400">WhatsApp</p>
-                    <p className="text-lg font-semibold">+91 797750 8768</p>
-                  </div>
-                </a>
+      <FAQSection />
 
-                <a
-                  href="mailto:info@digitalcadtraining.com"
-                  className="flex items-center gap-4 group"
-                >
-                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-sky-500 transition-colors">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-slate-400">Email</p>
-                    <p className="text-lg font-semibold">
-                      info@digitalcadtraining.com
-                    </p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-slate-950 text-slate-400 py-12 px-6 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-sky-500 to-blue-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-display font-bold text-lg">
-                    D
-                  </span>
-                </div>
-                <span className="font-display font-semibold text-xl text-white">
-                  Digital CAD Training
-                </span>
-              </div>
-              <p className="text-sm mb-4">
-                Professional automotive plastic product design training with
-                real OEM methodology.
-              </p>
-              <p className="text-xs text-slate-500">Authorized by CADPOINT</p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4 uppercase text-sm tracking-wider">
-                Quick Links
-              </h4>
-              <div className="space-y-2 text-sm">
-                <a
-                  href="#courses"
-                  className="block hover:text-sky-400 transition-colors"
-                >
-                  Courses
-                </a>
-                <a
-                  href="#syllabus"
-                  className="block hover:text-sky-400 transition-colors"
-                >
-                  Syllabus
-                </a>
-                <a
-                  href="#projects"
-                  className="block hover:text-sky-400 transition-colors"
-                >
-                  Projects
-                </a>
-                <a
-                  href="#pricing"
-                  className="block hover:text-sky-400 transition-colors"
-                >
-                  Pricing
-                </a>
-                <a
-                  href="#faq"
-                  className="block hover:text-sky-400 transition-colors"
-                >
-                  FAQ
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4 uppercase text-sm tracking-wider">
-                Legal
-              </h4>
-              <div className="space-y-2 text-sm">
-                <a
-                  href="#"
-                  className="block hover:text-sky-400 transition-colors"
-                >
-                  Privacy Policy
-                </a>
-                <a
-                  href="#"
-                  className="block hover:text-sky-400 transition-colors"
-                >
-                  Terms of Service
-                </a>
-                <a
-                  href="#"
-                  className="block hover:text-sky-400 transition-colors"
-                >
-                  Refund Policy
-                </a>
-              </div>
-            </div>
-          </div>
-
+      <footer>
+        <div>
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-800 text-sm">
             <p>© 2026 Digital CAD Training. All rights reserved.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
@@ -756,6 +617,7 @@ export default function Landing() {
       </footer>
 
       {/* Brochure Modal */}
+      {/* Brochure Modal */}
       <div
         id="brochure-modal"
         className={cx(
@@ -771,9 +633,10 @@ export default function Landing() {
         <div
           className={cx(
             "bg-white dark:bg-slate-900 rounded-2xl max-w-md w-full p-8 transition-transform duration-300",
-            brochureOpen ? "transform scale-100" : "transform scale-95",
+            brochureOpen ? "scale-100" : "scale-95",
           )}
         >
+          {/* Header */}
           <div className="flex justify-between items-center mb-6">
             <h3 className="font-display text-2xl font-semibold">
               Download Brochure
@@ -788,37 +651,26 @@ export default function Landing() {
             </button>
           </div>
 
-          <p className="text-slate-600 dark:text-slate-400 mb-6">
-            Enter your details to receive the complete course brochure with
-            syllabus, pricing, and batch details.
+          {/* Content */}
+          <p className="text-slate-600 dark:text-slate-400 mb-8 text-center">
+            Get the complete course brochure including syllabus, projects,
+            pricing, and upcoming batch details directly on WhatsApp.
           </p>
 
-          <form className="space-y-4">
-            <input
-              type="text"
-              placeholder="Your Name"
-              required
-              className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
-            />
-            <input
-              type="tel"
-              placeholder="Phone Number"
-              required
-              className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
-            />
-            <input
-              type="email"
-              placeholder="Email Address"
-              required
-              className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
-            />
-            <button
-              type="submit"
-              className="w-full bg-sky-500 hover:bg-sky-600 text-white py-3 rounded-lg font-semibold transition-all hover:scale-105"
-            >
-              Download Brochure
-            </button>
-          </form>
+          {/* CTA */}
+          <a
+            href="https://wa.aisensy.com/wThTGk"
+            target="_blank"
+            rel="noreferrer"
+            className="block w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-xl font-semibold text-center transition-all hover:scale-105"
+          >
+            📄 Get Brochure on WhatsApp
+          </a>
+
+          {/* Reassurance */}
+          <p className="text-xs text-slate-500 dark:text-slate-500 mt-4 text-center">
+            Instant access • No forms • No spam
+          </p>
         </div>
       </div>
     </div>
