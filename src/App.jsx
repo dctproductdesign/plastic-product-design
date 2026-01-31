@@ -375,8 +375,8 @@ export default function Landing() {
           </div>
 
           <div className="hidden lg:flex items-center gap-8 text-sm font-medium">
-            <a href="#courses" className="hover:text-sky-500 transition-colors">
-              Courses
+            <a href="#Pricingoffer" className="hover:text-sky-500 transition-colors">
+              WEBINAR-OFFER-Details
             </a>
             <a
               href="#syllabus"
