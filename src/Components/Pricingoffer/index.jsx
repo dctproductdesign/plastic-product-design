@@ -589,12 +589,12 @@ export default function PricingOffer() {
                         {formatINR(
                           phase === "ACTIVE"
                             ? OFFER.offerPrice
-                            : OFFER.regularPrice,
+                            : OFFER.offerPrice,
                         )}
                       </div>
                       {phase === "ACTIVE" && (
                         <p className="mt-1 text-sm text-white/80 line-through">
-                          ₹{formatINR(OFFER.regularPrice)}
+                          ₹{formatINR(OFFER.offerPrice)}
                         </p>
                       )}
                     </div>
@@ -611,8 +611,8 @@ export default function PricingOffer() {
                   <div className="mt-5 rounded-2xl bg-black/35 border border-white/25 p-4">
                     💳 <span className="font-semibold">EMI Plan</span>
                     <ul className="mt-2 ml-5 list-disc">
-                      <li>₹7,000 – 10 Feb</li>
-                      <li>₹7,000 – 10 Mar</li>
+                      <li>₹6,000 INR – 6 Feb</li>
+                      <li>₹6,000 INR – 6 Mar</li>
                     </ul>
                   </div>
 
