@@ -538,14 +538,24 @@ export default function Landing() {
                   <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
                 </a>
 
-                <button
+                {/* <button
                   onClick={() => setBrochureOpen(true)}
                   className="inline-flex items-center justify-center gap-2 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 px-8 py-4 rounded-full font-semibold transition-all hover:scale-105"
                   type="button"
                 >
                   <Download className="w-5 h-5" />
-                  <span>Get Course Brochure</span>
-                </button>
+                  <span>Get Course Brochuree</span>
+                </button> */}
+
+                <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                <a
+                  href="#trust"
+                  className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white px-8 py-4 rounded-full font-semibold transition-all hover:scale-105 group"
+                >
+                  <span>Get Trust Varified</span>
+                  <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+                </a>
+              </div>
               </div>
 
               <p className="text-xs text-slate-500 dark:text-slate-500">

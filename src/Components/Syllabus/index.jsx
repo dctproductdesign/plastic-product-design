@@ -402,7 +402,7 @@ export default function PlasticSyllabusTableSection() {
                 </>
               ) : (
                 <>
-                  Open <ChevronDown size={16} />
+                  Click Here For Syllabus<ChevronDown size={16} />
                 </>
               )}
             </button>

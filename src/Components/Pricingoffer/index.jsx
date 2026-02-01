@@ -263,61 +263,161 @@ export default function PricingOffer() {
 
         {/* 🔥 FOMO Timer Panel */}
         <FadeIn delay={120}>
-          <div className="relative mt-8 sm:mt-10 rounded-3xl overflow-hidden border border-rose-400/30 shadow-[0_0_40px_rgba(244,63,94,0.25)]">
+          <div className="relative mt-8 sm:mt-10 rounded-3xl overflow-hidden border border-rose-400/35 shadow-[0_0_60px_rgba(244,63,94,0.28)]">
             {/* Animated background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-rose-600/30 via-amber-500/20 to-indigo-600/30 animate-pulse" />
-            <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-xl" />
+            <div className="absolute inset-0 bg-gradient-to-br from-rose-600/35 via-amber-500/25 to-indigo-600/35 animate-pulse" />
+            <div className="absolute inset-0 bg-slate-950/85 backdrop-blur-xl" />
 
             {/* Content */}
             <div className="relative z-10 p-6 sm:p-8">
               {/* Header */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="relative">
-                    <span className="absolute inset-0 rounded-2xl bg-rose-500/40 blur-xl animate-ping" />
-                    <div className="relative w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-500 to-amber-500 flex items-center justify-center shadow-lg">
-                      <Clock className="w-6 h-6 text-white" />
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+                <div className="flex items-start gap-4">
+                  {/* ✅ BIG Hourglass Badge (replaces clock) */}
+                  <div className="relative shrink-0">
+                    {/* glow ping */}
+                    <span className="absolute inset-0 rounded-3xl bg-rose-500/45 blur-2xl animate-ping" />
+                    {/* solid glow */}
+                    <span className="absolute inset-0 rounded-3xl bg-amber-400/20 blur-xl" />
+
+                    <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-3xl bg-gradient-to-br from-rose-500 via-amber-400 to-rose-500 flex items-center justify-center shadow-[0_10px_30px_rgba(244,63,94,0.35)] border border-white/15">
+                      <svg
+                        viewBox="0 0 64 64"
+                        className="h-9 w-9 sm:h-10 sm:w-10"
+                        aria-hidden="true"
+                      >
+                        {/* Frame */}
+                        <path
+                          d="M20 8h24M20 56h24M24 8v8c0 6 6 10 8 12-2 2-8 6-8 12v8M40 8v8c0 6-6 10-8 12 2 2 8 6 8 12v8"
+                          fill="none"
+                          stroke="rgba(255,255,255,.92)"
+                          strokeWidth="3.2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+
+                        {/* TOP sand */}
+                        <path
+                          className="hg-top"
+                          d="M28 18h8c2 0 3 1 3 3v1c0 4-4 7-7 9h-0c-3-2-7-5-7-9v-1c0-2 1-3 3-3z"
+                          fill="rgba(255,255,255,.92)"
+                        />
+
+                        {/* Stream */}
+                        <rect
+                          className="hg-stream"
+                          x="31"
+                          y="30"
+                          width="2"
+                          height="12"
+                          rx="1"
+                          fill="rgba(255,255,255,.92)"
+                        />
+
+                        {/* BOTTOM sand */}
+                        <path
+                          className="hg-bottom"
+                          d="M28 46h8c2 0 3-1 3-3v-1c0-4-4-7-7-9h-0c-3 2-7 5-7 9v1c0 2 1 3 3 3z"
+                          fill="rgba(255,255,255,.92)"
+                        />
+                      </svg>
+
+                      {/* status dot */}
+                      <span className="absolute -right-1 -top-1 h-3.5 w-3.5 rounded-full bg-emerald-400 animate-pulse ring-4 ring-emerald-400/20" />
                     </div>
                   </div>
 
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.35em] text-rose-300 font-bold">
-                      {timeLabel}
-                    </p>
-                    <p className="text-sm sm:text-base text-white font-semibold">
+                  {/* Text + FOMO stats */}
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      {/* Phase badge: super clear */}
+                      {phase === "ACTIVE" ? (
+                        <span className="inline-flex items-center gap-2 rounded-full bg-emerald-400/15 border border-emerald-300/25 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.28em] text-emerald-50">
+                          <span className="h-2.5 w-2.5 rounded-full bg-emerald-300 animate-pulse" />
+                          DEAL LIVE
+                        </span>
+                      ) : phase === "UPCOMING" ? (
+                        <span className="inline-flex items-center gap-2 rounded-full bg-amber-400/15 border border-amber-300/25 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.28em] text-amber-50">
+                          <span className="h-2.5 w-2.5 rounded-full bg-amber-300 animate-pulse" />
+                          UNLOCKING SOON
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-2 rounded-full bg-rose-500/15 border border-rose-300/25 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.28em] text-rose-50">
+                          <span className="h-2.5 w-2.5 rounded-full bg-rose-300" />
+                          OFFER CLOSED
+                        </span>
+                      )}
+
+                      <span className="text-xs uppercase tracking-[0.35em] text-rose-300 font-bold">
+                        {timeLabel}
+                      </span>
+                    </div>
+
+                    <p className="mt-2 text-sm sm:text-base text-white font-semibold leading-snug">
                       {phase === "ACTIVE"
-                        ? "⚠️ Seats & price can change any minute"
+                        ? "Seats + deal price can change anytime. Don’t wait."
                         : phase === "UPCOMING"
-                          ? "⏳ Offer will unlock soon"
-                          : "❗ Offer closed — regular fee applies"}
+                          ? "Offer unlocks soon — be ready to register instantly."
+                          : "Offer closed — regular fee applies now."}
                     </p>
+
+                    {/* FOMO strip */}
+                    <div
+                      className={[
+                        "mt-3 inline-flex flex-wrap items-center gap-2 rounded-xl px-3 py-2 border",
+                        phase === "ACTIVE"
+                          ? "bg-rose-500/18 border-rose-300/30"
+                          : "bg-white/8 border-white/15",
+                      ].join(" ")}
+                    >
+                      <span className="text-xs sm:text-sm font-semibold text-white">
+                        ✅ 23 students enrolled
+                      </span>
+                      <span className="text-white/40">•</span>
+                      <span className="text-xs sm:text-sm font-extrabold text-amber-300">
+                        🔥 7 seats left
+                      </span>
+                      <span className="text-white/40">•</span>
+                      <span className="text-xs sm:text-sm font-semibold text-white">
+                        📌 Batch starts tomorrow
+                      </span>
+                      <span className="text-white/40">•</span>
+                      <span className="text-xs sm:text-sm font-extrabold text-rose-200">
+                        LAST CHANCE
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Countdown */}
+                {/* ✅ Countdown (more visible + “fixed” importance) */}
                 <div
                   className={[
-                    "flex items-center justify-center gap-3",
+                    "flex items-center justify-center gap-3 rounded-2xl px-3 py-2",
+                    "border border-rose-300/25 bg-white/5 shadow-[0_0_30px_rgba(244,63,94,0.18)]",
                     tick ? "scale-[1.03]" : "scale-100",
                     "transition-transform duration-300",
                   ].join(" ")}
                 >
                   <TimeBox label="HRS" value={pad2(hh)} accent />
-                  <span className="text-3xl font-bold text-rose-300">:</span>
+                  <span className="text-3xl font-extrabold text-rose-300">
+                    :
+                  </span>
                   <TimeBox label="MIN" value={pad2(mm)} accent />
-                  <span className="text-3xl font-bold text-rose-300">:</span>
+                  <span className="text-3xl font-extrabold text-rose-300">
+                    :
+                  </span>
                   <TimeBox label="SEC" value={pad2(ss)} accent />
                 </div>
               </div>
 
-              {/* FOMO Message */}
-              <div className="mt-5 rounded-2xl bg-rose-500/10 border border-rose-400/30 p-4">
+              {/* Strong FOMO Message */}
+              <div className="mt-5 rounded-2xl bg-rose-500/12 border border-rose-400/35 p-4">
                 <p className="text-sm sm:text-base text-white font-semibold leading-relaxed">
                   🚨{" "}
-                  <span className="text-amber-300">
+                  <span className="text-amber-300 font-extrabold">
                     This deal will NOT repeat.
                   </span>{" "}
-                  Once the timer hits zero, the price jumps back instantly.
+                  When the timer hits zero, the fee jumps back instantly.
                 </p>
               </div>
 
@@ -329,6 +429,41 @@ export default function PricingOffer() {
                 </span>
               </div>
             </div>
+
+            {/* ✅ Local CSS for hourglass (10 min loop) */}
+            <style>{`
+            .hg-top {
+              transform-origin: 32px 24px;
+              animation: hgTop 600s linear infinite;
+            }
+            .hg-bottom {
+              transform-origin: 32px 44px;
+              animation: hgBottom 600s linear infinite;
+            }
+            .hg-stream {
+              transform-origin: 32px 36px;
+              animation: hgStream 600s linear infinite;
+            }
+
+            @keyframes hgTop {
+              0%   { transform: scaleY(1); opacity: 1; }
+              94%  { transform: scaleY(0.05); opacity: 0.85; }
+              100% { transform: scaleY(1); opacity: 1; }
+            }
+
+            @keyframes hgBottom {
+              0%   { transform: scaleY(0.05); opacity: 0.85; }
+              94%  { transform: scaleY(1); opacity: 1; }
+              100% { transform: scaleY(0.05); opacity: 0.85; }
+            }
+
+            @keyframes hgStream {
+              0%   { opacity: 1; transform: scaleY(1); }
+              90%  { opacity: 1; transform: scaleY(1); }
+              94%  { opacity: 0.15; transform: scaleY(0.6); }
+              100% { opacity: 1; transform: scaleY(1); }
+            }
+          `}</style>
           </div>
         </FadeIn>
 
@@ -338,203 +473,144 @@ export default function PricingOffer() {
           {/* Offer Card — Premium + FOMO */}
           <FadeIn delay={180}>
             <div className="relative">
-              {/* Outer Glow (only when ACTIVE) */}
+              {/* INTENSE GLOW AURA */}
               <div
-                className={[
-                  "absolute -inset-1 rounded-[28px] blur-2xl opacity-0 transition-opacity duration-500",
-                  phase === "ACTIVE" ? "opacity-100" : "opacity-30",
-                ].join(" ")}
+                className="absolute -inset-3 rounded-[36px] blur-3xl opacity-100"
                 style={{
                   background:
                     phase === "ACTIVE"
-                      ? "radial-gradient(60% 60% at 50% 40%, rgba(244,63,94,.35), rgba(245,158,11,.22), rgba(99,102,241,.18), transparent 70%)"
-                      : "radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,.08), transparent 70%)",
+                      ? "radial-gradient(70% 70% at 50% 30%, rgba(255,115,0,.45), rgba(255,0,128,.35), rgba(99,102,241,.35), transparent 75%)"
+                      : "radial-gradient(60% 60% at 50% 40%, rgba(148,163,184,.18), transparent 70%)",
                 }}
               />
 
               <div
                 className={[
-                  "relative overflow-hidden rounded-3xl border shadow-2xl",
+                  "relative overflow-hidden rounded-3xl border shadow-[0_30px_80px_rgba(0,0,0,.55)]",
                   "transition-transform duration-300 hover:-translate-y-1",
                   phase === "ACTIVE"
-                    ? "border-white/18 bg-gradient-to-br from-slate-950/75 via-indigo-950/45 to-slate-950/80"
-                    : "border-white/10 bg-white/5 opacity-95",
+                    ? "border-white/30 bg-gradient-to-br from-[#ff7a18] via-[#ff0066] to-[#6a11cb]"
+                    : "border-white/15 bg-slate-900/80 opacity-95",
                 ].join(" ")}
               >
-                {/* Subtle grid + vignette */}
-                <div className="absolute inset-0 opacity-[0.10] pointer-events-none">
-                  <svg
-                    width="100%"
-                    height="100%"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <defs>
-                      <pattern
-                        id="offerGrid"
-                        width="54"
-                        height="54"
-                        patternUnits="userSpaceOnUse"
-                      >
-                        <path
-                          d="M 54 0 L 0 0 0 54"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1"
-                        />
-                      </pattern>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#offerGrid)" />
-                  </svg>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-black/35 pointer-events-none" />
-
-                {/* Animated shine (ACTIVE) */}
+                {/* SHINE SWEEP */}
                 {phase === "ACTIVE" && (
-                  <div className="pointer-events-none absolute -left-1/3 top-0 h-full w-2/3 skew-x-[-18deg] bg-gradient-to-r from-transparent via-white/12 to-transparent animate-[shine_2.8s_ease-in-out_infinite]" />
+                  <div className="pointer-events-none absolute -left-1/2 top-0 h-full w-2/3 skew-x-[-18deg] bg-gradient-to-r from-transparent via-white/25 to-transparent animate-[shine_2.1s_ease-in-out_infinite]" />
                 )}
 
-                {/* Top row: Title + Badges */}
-                <div className="relative p-6 sm:p-8">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="min-w-0">
-                      <div className="flex flex-wrap items-center gap-2">
-                        {/* Status badge */}
-                        <span
-                          className={[
-                            "inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider border",
-                            phase === "ACTIVE"
-                              ? "bg-emerald-400/12 border-emerald-300/22 text-emerald-50"
-                              : "bg-white/6 border-white/12 text-white/70",
-                          ].join(" ")}
-                        >
-                          <span
-                            className={[
-                              "h-2 w-2 rounded-full",
-                              phase === "ACTIVE"
-                                ? "bg-emerald-300 animate-pulse"
-                                : "bg-white/40",
-                            ].join(" ")}
-                          />
-                          {phase === "ACTIVE" ? "Deal Live" : "Inactive"}
+                <div className="relative p-6 sm:p-8 text-white">
+                  {/* LIVE / EXPIRED HEADER */}
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    {phase === "ACTIVE" ? (
+                      <div className="inline-flex items-center gap-3 rounded-full px-5 py-2 bg-black/35 border border-white/30">
+                        <span className="relative flex h-3 w-3">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-3 w-3 bg-green-400" />
                         </span>
-
-                        {/* Discount badge */}
-                        <span className="inline-flex items-center rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider bg-rose-500/12 border border-rose-300/20 text-rose-100">
-                          Save ₹
-                          {formatINR(
-                            Math.max(0, OFFER.regularPrice - OFFER.offerPrice),
-                          )}
-                          <span className="mx-2 opacity-40">•</span>
-                          {Math.round(
-                            (Math.max(
-                              0,
-                              OFFER.regularPrice - OFFER.offerPrice,
-                            ) /
-                              Math.max(1, OFFER.regularPrice)) *
-                              100,
-                          )}
-                          % OFF
+                        <span className="text-sm font-extrabold tracking-[0.25em] uppercase">
+                          DEAL LIVE NOW
                         </span>
                       </div>
+                    ) : (
+                      <div className="inline-flex items-center gap-3 rounded-full px-5 py-2 bg-black/35 border border-white/20">
+                        <span className="h-3 w-3 rounded-full bg-white/40" />
+                        <span className="text-sm font-extrabold tracking-[0.25em] uppercase text-white/70">
+                          DEAL CLOSED
+                        </span>
+                      </div>
+                    )}
 
-                      <h3 className="mt-4 font-display text-2xl sm:text-3xl font-bold text-white">
-                        Last-Hour Offer
-                      </h3>
-                      <p className="mt-2 text-white/80 text-sm sm:text-base leading-relaxed">
-                        Lock your seat at the lowest fee before the window
-                        closes.
-                      </p>
-                    </div>
-
-                    {/* Icon bubble */}
-                    <div
-                      className={[
-                        "w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center border",
-                        phase === "ACTIVE"
-                          ? "bg-gradient-to-br from-rose-500/18 via-amber-400/10 to-white/5 border-white/15"
-                          : "bg-white/8 border-white/12",
-                      ].join(" ")}
-                    >
-                      <BadgePercent className="w-7 h-7 text-amber-200" />
+                    {/* DISCOUNT BADGE */}
+                    <div className="rounded-2xl px-4 py-2 bg-black/35 border border-white/25">
+                      <span className="text-sm font-bold">
+                        SAVE ₹
+                        {formatINR(
+                          Math.max(0, OFFER.regularPrice - OFFER.offerPrice),
+                        )}{" "}
+                        (
+                        {Math.round(
+                          ((OFFER.regularPrice - OFFER.offerPrice) /
+                            OFFER.regularPrice) *
+                            100,
+                        )}
+                        %)
+                      </span>
                     </div>
                   </div>
 
-                  {/* FOMO strip */}
-                  <div className="mt-5 rounded-2xl border border-amber-300/20 bg-amber-400/10 px-4 py-3">
-                    <p className="text-sm text-white/90">
-                      ⚠️ When the timer ends, fee jumps back to{" "}
-                      <span className="font-semibold text-white">
+                  {/* TITLE */}
+                  <h3 className="mt-6 font-display text-3xl sm:text-4xl font-extrabold leading-tight">
+                    Last-Hour Price Window
+                  </h3>
+
+                  <p className="mt-3 text-white/90 text-base sm:text-lg">
+                    {phase === "ACTIVE"
+                      ? "This is the lowest price you’ll ever get. Once the timer ends, the fee jumps instantly."
+                      : "The discount window has ended. You can still enroll at the regular fee."}
+                  </p>
+
+                  {/* FOMO STRIP */}
+                  <div className="mt-5 rounded-2xl bg-black/40 border border-yellow-300/40 px-4 py-3">
+                    <p className="text-sm sm:text-base font-semibold">
+                      ⚠️ After this window, fee becomes{" "}
+                      <span className="text-yellow-300 font-extrabold">
                         ₹{formatINR(OFFER.regularPrice)}
                       </span>{" "}
-                      instantly.
+                      without exception.
                     </p>
                   </div>
 
-                  {/* Batch Info */}
-                  <div className="mt-6 grid gap-3 text-sm sm:text-base text-white/90">
-                    <div className="rounded-2xl border border-white/12 bg-white/6 p-4">
-                      <div>
-                        📅 <span className="font-semibold">Batch Start:</span> 2
-                        February 2026
-                      </div>
-                      <div className="mt-2">
-                        ⏰ <span className="font-semibold">Time Slots:</span>
-                        <ul className="mt-2 ml-5 list-disc text-white/80 space-y-1">
-                          <li>
-                            8:30 PM – 9:30 PM India (working professionals)
-                          </li>
-                          <li>
-                            10:00 AM – 11:00 AM India (shift-based + global
-                            learners)
-                          </li>
-                        </ul>
-                        <div className="mt-2 text-xs text-white/70">
-                          ✔ You may attend{" "}
-                          <span className="font-semibold">both slots</span>
-                        </div>
-                      </div>
+                  {/* BATCH INFO */}
+                  <div className="mt-6 rounded-2xl bg-black/35 border border-white/25 p-4 space-y-2">
+                    <p>
+                      📅 <span className="font-semibold">Batch Start:</span> 2
+                      February 2026
+                    </p>
+                    <div>
+                      ⏰ <span className="font-semibold">Time Slots:</span>
+                      <ul className="mt-2 ml-5 list-disc text-white/90">
+                        <li>8:30 PM – 9:30 PM (Working Professionals)</li>
+                        <li>10:00 AM – 11:00 AM (Shift / Global)</li>
+                      </ul>
+                      <p className="mt-2 text-xs text-white/80">
+                        ✔ Attend both slots if needed
+                      </p>
                     </div>
                   </div>
 
-                  {/* Price block */}
-                  <div className="mt-6 rounded-2xl border border-white/14 bg-gradient-to-br from-white/10 via-white/6 to-white/5 p-5">
-                    <div className="flex items-end justify-between gap-4 flex-wrap">
-                      <div>
-                        <div className="text-xs uppercase tracking-[0.25em] text-white/60 font-bold">
-                          Deal Price
-                        </div>
-                        <div className="mt-2 flex items-baseline gap-2 flex-wrap">
-                          <div className="text-4xl sm:text-5xl font-display font-extrabold text-white">
-                            ₹{formatINR(OFFER.offerPrice)}
-                          </div>
-                          <span className="text-xs font-semibold text-white/70">
-                            INR
-                          </span>
-                        </div>
-
-                        <div className="mt-2 text-sm text-white/75">
-                          Regular:{" "}
-                          <span className="line-through opacity-80">
-                            ₹{formatINR(OFFER.regularPrice)}
-                          </span>
-                        </div>
+                  {/* PRICE BOX */}
+                  <div className="mt-6 rounded-2xl bg-black/45 border border-white/30 p-5 flex flex-wrap justify-between items-end gap-4">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.3em] font-bold text-white/70">
+                        Deal Price
+                      </p>
+                      <div className="mt-2 text-4xl sm:text-5xl font-extrabold">
+                        ₹
+                        {formatINR(
+                          phase === "ACTIVE"
+                            ? OFFER.offerPrice
+                            : OFFER.regularPrice,
+                        )}
                       </div>
+                      {phase === "ACTIVE" && (
+                        <p className="mt-1 text-sm text-white/80 line-through">
+                          ₹{formatINR(OFFER.regularPrice)}
+                        </p>
+                      )}
+                    </div>
 
-                      <div className="text-sm text-white/85">
-                        <div className="font-semibold">
-                          Register with ₹{formatINR(OFFER.registerToFreeze)}
-                        </div>
-                        <div className="text-xs text-white/70 mt-1">
-                          to lock deal price
-                        </div>
-                      </div>
+                    <div>
+                      <p className="font-semibold">
+                        Register with ₹{formatINR(OFFER.registerToFreeze)}
+                      </p>
+                      <p className="text-xs text-white/80">to lock your seat</p>
                     </div>
                   </div>
 
                   {/* EMI */}
-                  <div className="mt-5 rounded-2xl border border-white/12 bg-white/6 p-4 text-sm sm:text-base text-white/90">
-                    💳 <span className="font-semibold">EMI Plan:</span>
-                    <ul className="mt-2 ml-5 list-disc text-white/80 space-y-1">
+                  <div className="mt-5 rounded-2xl bg-black/35 border border-white/25 p-4">
+                    💳 <span className="font-semibold">EMI Plan</span>
+                    <ul className="mt-2 ml-5 list-disc">
                       <li>₹7,000 – 10 Feb</li>
                       <li>₹7,000 – 10 Mar</li>
                     </ul>
@@ -547,21 +623,15 @@ export default function PricingOffer() {
                         href="https://imjo.in/Hfvz9p"
                         target="_blank"
                         rel="noreferrer noopener"
-                        className="group relative w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-semibold bg-white text-slate-900 hover:bg-slate-100 transition-transform duration-300 hover:scale-[1.02] overflow-hidden"
+                        className="relative w-full inline-flex items-center justify-center gap-3 rounded-full px-6 py-4 text-lg font-extrabold text-slate-900 bg-white hover:bg-slate-100 animate-[ctaPulse_1.3s_ease-in-out_infinite]"
                       >
-                        {/* CTA glow */}
-                        <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-r from-rose-500/15 via-amber-400/15 to-indigo-500/15" />
-                        <span className="relative">
-                          REGISTER NOW – ₹{formatINR(OFFER.registerToFreeze)}{" "}
-                          Only
-                        </span>
-                        <ArrowRight className="relative w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                        ENROLL NOW – ₹{formatINR(OFFER.registerToFreeze)} ONLY
+                        <ArrowRight className="w-5 h-5" />
                       </a>
                     ) : (
                       <button
-                        type="button"
                         disabled
-                        className="w-full rounded-full px-6 py-3.5 font-semibold bg-white/15 text-white/50 border border-white/10 cursor-not-allowed"
+                        className="w-full rounded-full px-6 py-4 font-semibold bg-white/20 text-white/60 cursor-not-allowed"
                       >
                         Offer Not Active
                       </button>
@@ -569,13 +639,17 @@ export default function PricingOffer() {
                   </div>
                 </div>
 
-                {/* Local animations */}
+                {/* ANIMATIONS */}
                 <style>{`
         @keyframes shine {
-          0% { transform: translateX(-40%) skewX(-18deg); opacity: 0; }
-          15% { opacity: 1; }
-          55% { opacity: 1; }
-          100% { transform: translateX(140%) skewX(-18deg); opacity: 0; }
+          0% { transform: translateX(-60%) skewX(-18deg); opacity: 0; }
+          20% { opacity: 1; }
+          60% { opacity: 1; }
+          100% { transform: translateX(160%) skewX(-18deg); opacity: 0; }
+        }
+        @keyframes ctaPulse {
+          0%,100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
         }
       `}</style>
               </div>
