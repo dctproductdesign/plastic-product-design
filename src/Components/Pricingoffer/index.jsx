@@ -611,8 +611,8 @@ export default function PricingOffer() {
                   <div className="mt-5 rounded-2xl bg-black/35 border border-white/25 p-4">
                     💳 <span className="font-semibold">EMI Plan</span>
                     <ul className="mt-2 ml-5 list-disc">
-                      <li>₹6,000 INR – 6 Feb</li>
-                      <li>₹6,000 INR – 6 Mar</li>
+                      <li>₹6,000 INR – 12 Feb</li>
+                      <li>₹6,000 INR – 12 Mar</li>
                     </ul>
                   </div>
 
