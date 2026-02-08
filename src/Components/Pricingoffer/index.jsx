@@ -371,11 +371,11 @@ export default function PricingOffer() {
                       ].join(" ")}
                     >
                       <span className="text-xs sm:text-sm font-semibold text-white">
-                        ✅ 27 students enrolled
+                        ✅ 24 students enrolled
                       </span>
                       <span className="text-white/40">•</span>
                       <span className="text-xs sm:text-sm font-extrabold text-amber-300">
-                        🔥 3 seats left
+                        🔥 6 seats left
                       </span>
                       <span className="text-white/40">•</span>
                       <span className="text-xs sm:text-sm font-semibold text-white">

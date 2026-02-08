@@ -13,5 +13,5 @@ export const OFFER = {
   registerToFreeze: 999,
 
   // seat info
-  seatsLeft: 3,
+  seatsLeft: 6,
 };
