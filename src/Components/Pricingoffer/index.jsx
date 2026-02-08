@@ -760,7 +760,7 @@ export default function PricingOffer() {
               {/* CTA (same CTA styling as offer card) */}
               <div className="mt-6">
                 <a
-                  href="https://imjo.in/mJS5Es"
+                  href="https://imjo.in/Hfvz9p"
                   target="_blank"
                   rel="noreferrer noopener"
                   className="group w-full inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-semibold bg-white text-slate-900 hover:bg-slate-100 transition-transform duration-300 hover:scale-[1.02]"
