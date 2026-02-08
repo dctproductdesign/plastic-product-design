@@ -488,7 +488,7 @@ export default function Landing() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500" />
               </span>
-              Enrollments Closing Today - Batch Starts Tomorrow|2nd February 2026!
+              Registrations Closing Today - Batch Starts Tomorrow|9th February 2026!
             </span>
           </div>
 
