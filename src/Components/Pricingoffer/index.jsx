@@ -143,7 +143,7 @@ export default function PricingOffer() {
     if (phase === "ACTIVE")
       return "Lock the lowest fee before the timer hits zero.";
     if (phase === "UPCOMING")
-      return "Batch starts 2nd February. Reserve your seat early.";
+      return "Batch starts 9th February. Reserve your seat early.";
     return "You can still join the same program. Start now—don’t wait another month.";
   }, [phase]);
 
@@ -371,11 +371,11 @@ export default function PricingOffer() {
                       ].join(" ")}
                     >
                       <span className="text-xs sm:text-sm font-semibold text-white">
-                        ✅ 23 students enrolled
+                        ✅ 27 students enrolled
                       </span>
                       <span className="text-white/40">•</span>
                       <span className="text-xs sm:text-sm font-extrabold text-amber-300">
-                        🔥 7 seats left
+                        🔥 3 seats left
                       </span>
                       <span className="text-white/40">•</span>
                       <span className="text-xs sm:text-sm font-semibold text-white">
@@ -563,7 +563,7 @@ export default function PricingOffer() {
                   {/* BATCH INFO */}
                   <div className="mt-6 rounded-2xl bg-black/35 border border-white/25 p-4 space-y-2">
                     <p>
-                      📅 <span className="font-semibold">Batch Start:</span> 2
+                      📅 <span className="font-semibold">Batch Start:</span> 9
                       February 2026
                     </p>
                     <div>
